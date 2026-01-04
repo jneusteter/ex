@@ -1,9 +1,9 @@
 <template>
   <component
     :is="to ? resolveComponent('NuxtLink') : 'button'"
-    :to="to"
+    :to
     :type="to ? undefined : type"
-    :disabled="disabled"
+    :disabled
     class="inline-flex items-center justify-center px-4 py-2 rounded-lg font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-dark-900 disabled:opacity-50 disabled:cursor-not-allowed"
     :class="[variantClasses[variant], $attrs.class]"
   >
@@ -20,19 +20,17 @@ defineOptions({
   inheritAttrs: false,
 });
 
-const props = withDefaults(
-  defineProps<{
-    variant?: ButtonVariant;
-    type?: "button" | "submit" | "reset";
-    disabled?: boolean;
-    to?: string;
-  }>(),
-  {
-    variant: "primary",
-    type: "button",
-    disabled: false,
-  }
-);
+const {
+  variant = "primary",
+  type,
+  disabled = false,
+  to,
+} = defineProps<{
+  variant?: ButtonVariant;
+  type?: "button" | "submit" | "reset";
+  disabled?: boolean;
+  to?: string;
+}>();
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary: "bg-accent-500 text-white hover:bg-accent-600 focus:ring-accent-500",
