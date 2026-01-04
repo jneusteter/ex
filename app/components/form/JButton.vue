@@ -22,7 +22,7 @@ defineOptions({
 
 const {
   variant = "primary",
-  type,
+  type = "button",
   disabled = false,
   to,
 } = defineProps<{
