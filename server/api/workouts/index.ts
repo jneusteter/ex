@@ -1,4 +1,4 @@
-import { eq, desc } from "drizzle-orm";
+import { desc } from "drizzle-orm";
 import { db } from "../../database";
 import { workouts } from "../../database/schema";
 
