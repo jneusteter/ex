@@ -15,9 +15,9 @@
             <h2 class="text-lg font-semibold text-white">Log Set</h2>
             <p class="text-sm text-dark-400">{{ exerciseName }}</p>
           </div>
-          <button @click="$emit('close')" class="btn-ghost p-2 -mr-2">
+          <FormButton variant="ghost" @click="$emit('close')" class="p-2 -mr-2">
             <IconX class="w-5 h-5" />
-          </button>
+          </FormButton>
         </div>
 
         <!-- Form -->
@@ -26,13 +26,13 @@
           <div>
             <label class="label">Weight (lbs)</label>
             <div class="flex items-center gap-3">
-              <button
-                type="button"
+              <FormButton
+                variant="secondary"
                 @click="adjustWeight(-5)"
-                class="btn-secondary w-12 h-12 text-xl"
+                class="w-12 h-12 text-xl"
               >
                 -
-              </button>
+              </FormButton>
               <input
                 v-model.number="form.weight"
                 type="number"
@@ -40,13 +40,13 @@
                 placeholder="0"
                 class="input text-center text-2xl font-bold flex-1"
               />
-              <button
-                type="button"
+              <FormButton
+                variant="secondary"
                 @click="adjustWeight(5)"
-                class="btn-secondary w-12 h-12 text-xl"
+                class="w-12 h-12 text-xl"
               >
                 +
-              </button>
+              </FormButton>
             </div>
           </div>
 
@@ -54,13 +54,13 @@
           <div>
             <label class="label">Reps</label>
             <div class="flex items-center gap-3">
-              <button
-                type="button"
+              <FormButton
+                variant="secondary"
                 @click="adjustReps(-1)"
-                class="btn-secondary w-12 h-12 text-xl"
+                class="w-12 h-12 text-xl"
               >
                 -
-              </button>
+              </FormButton>
               <input
                 v-model.number="form.reps"
                 type="number"
@@ -68,13 +68,13 @@
                 placeholder="0"
                 class="input text-center text-2xl font-bold flex-1"
               />
-              <button
-                type="button"
+              <FormButton
+                variant="secondary"
                 @click="adjustReps(1)"
-                class="btn-secondary w-12 h-12 text-xl"
+                class="w-12 h-12 text-xl"
               >
                 +
-              </button>
+              </FormButton>
             </div>
           </div>
 
@@ -101,10 +101,10 @@
           </div>
 
           <!-- Submit -->
-          <button type="submit" class="btn-primary w-full py-3 text-lg">
+          <FormButton type="submit" class="w-full py-3 text-lg">
             <IconCheck class="w-5 h-5 mr-2" />
             Log Set
-          </button>
+          </FormButton>
         </form>
       </div>
     </div>

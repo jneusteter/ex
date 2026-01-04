@@ -12,9 +12,9 @@
         <!-- Header -->
         <div class="flex items-center justify-between px-6 py-4 border-b border-dark-700 shrink-0">
           <h2 class="text-lg font-semibold text-white">Select Exercise</h2>
-          <button @click="$emit('close')" class="btn-ghost p-2 -mr-2">
+          <FormButton variant="ghost" @click="$emit('close')" class="p-2 -mr-2">
             <IconX class="w-5 h-5" />
-          </button>
+          </FormButton>
         </div>
 
         <!-- Search -->

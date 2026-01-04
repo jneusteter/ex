@@ -16,10 +16,10 @@
       <IconChart class="w-16 h-16 text-dark-600 mx-auto mb-4" />
       <h3 class="text-lg font-medium text-dark-300 mb-2">No workout history</h3>
       <p class="text-dark-500 mb-4">Complete your first workout to see it here</p>
-      <NuxtLink to="/workout" class="btn-primary">
+      <FormButton to="/workout">
         <IconDumbbell class="w-5 h-5 mr-2" />
         Start Workout
-      </NuxtLink>
+      </FormButton>
     </div>
 
     <!-- Workout List -->
@@ -41,12 +41,13 @@
               </span>
             </p>
           </div>
-          <button
+          <FormButton
+            variant="ghost"
             @click="deleteWorkout(workout.id)"
-            class="btn-ghost p-2 text-dark-500 hover:text-red-400"
+            class="p-2 text-dark-500 hover:text-red-400"
           >
             <IconTrash class="w-4 h-4" />
-          </button>
+          </FormButton>
         </div>
 
         <!-- Workout Details (expandable) -->

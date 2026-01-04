@@ -6,10 +6,10 @@
         <h1 class="text-2xl font-bold text-white">Exercises</h1>
         <p class="text-dark-400 mt-1">Manage your exercise library</p>
       </div>
-      <button @click="showModal = true" class="btn-primary">
+      <FormButton @click="showModal = true">
         <IconPlus class="w-5 h-5 mr-2" />
         Add Exercise
-      </button>
+      </FormButton>
     </div>
 
     <!-- Search and Filter -->
@@ -42,10 +42,10 @@
       <p class="text-dark-500 mb-4">
         {{ searchQuery || selectedMuscleGroup ? 'Try adjusting your filters' : 'Get started by adding your first exercise' }}
       </p>
-      <button v-if="!searchQuery && !selectedMuscleGroup" @click="showModal = true" class="btn-primary">
+      <FormButton v-if="!searchQuery && !selectedMuscleGroup" @click="showModal = true">
         <IconPlus class="w-5 h-5 mr-2" />
         Add Exercise
-      </button>
+      </FormButton>
     </div>
 
     <div v-else class="grid gap-4">
@@ -70,12 +70,12 @@
             <p v-if="exercise.notes" class="text-dark-400 text-sm mt-3">{{ exercise.notes }}</p>
           </div>
           <div class="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-            <button @click="editExercise(exercise)" class="btn-ghost p-2">
+            <FormButton variant="ghost" @click="editExercise(exercise)" class="p-2">
               <IconEdit class="w-4 h-4" />
-            </button>
-            <button @click="deleteExercise(exercise.id)" class="btn-ghost p-2 text-red-400 hover:text-red-300 hover:bg-red-500/10">
+            </FormButton>
+            <FormButton variant="ghost" @click="deleteExercise(exercise.id)" class="p-2 text-red-400 hover:text-red-300 hover:bg-red-500/10">
               <IconTrash class="w-4 h-4" />
-            </button>
+            </FormButton>
           </div>
         </div>
       </div>

@@ -9,10 +9,10 @@
       <p class="text-dark-400 mb-8 max-w-md mx-auto">
         Start a new workout session to begin logging your exercises and track your progress.
       </p>
-      <button @click="startWorkout" class="btn-primary text-lg px-8 py-3">
+      <FormButton @click="startWorkout" class="text-lg px-8 py-3">
         <IconPlay class="w-6 h-6 mr-2" />
         Start Workout
-      </button>
+      </FormButton>
     </div>
 
     <!-- Active Workout -->
@@ -32,10 +32,10 @@
           </p>
         </div>
         <div class="flex items-center gap-3">
-          <button @click="finishWorkout" class="btn-primary">
+          <FormButton @click="finishWorkout">
             <IconCheck class="w-5 h-5 mr-2" />
             Finish
-          </button>
+          </FormButton>
         </div>
       </div>
 
@@ -47,12 +47,13 @@
               <h3 class="text-lg font-semibold text-white">{{ group.exerciseName }}</h3>
               <span class="text-sm text-dark-400">{{ group.muscleGroup }}</span>
             </div>
-            <button 
+            <FormButton 
+              variant="ghost"
               @click="addSetToExercise(Number(exerciseId), group.exerciseName, group.muscleGroup)"
-              class="btn-ghost text-accent-400"
+              class="text-accent-400"
             >
               <IconPlus class="w-5 h-5" />
-            </button>
+            </FormButton>
           </div>
           
           <!-- Sets Table -->
