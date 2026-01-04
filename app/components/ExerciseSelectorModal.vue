@@ -62,7 +62,7 @@
 </template>
 
 <script setup lang="ts">
-import type { Exercise } from "~/server/database/schema";
+import type { Exercise } from "~/types/database";
 import IconX from "~/components/icons/IconX.vue";
 import IconSearch from "~/components/icons/IconSearch.vue";
 

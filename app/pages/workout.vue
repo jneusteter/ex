@@ -123,28 +123,11 @@
 </template>
 
 <script setup lang="ts">
-import type { Workout, Exercise } from "~/server/database/schema";
+import type { Workout, Exercise, WorkoutWithSets, WorkoutSetWithExercise } from "~/types/database";
 import IconDumbbell from "~/components/icons/IconDumbbell.vue";
 import IconPlay from "~/components/icons/IconPlay.vue";
 import IconCheck from "~/components/icons/IconCheck.vue";
 import IconPlus from "~/components/icons/IconPlus.vue";
-
-interface WorkoutSet {
-  id: number;
-  setNumber: number;
-  weight: number | null;
-  reps: number | null;
-  rpe: number | null;
-  notes: string | null;
-  completedAt: Date;
-  exerciseId: number;
-  exerciseName: string;
-  muscleGroup: string;
-}
-
-interface WorkoutWithSets extends Workout {
-  sets: WorkoutSet[];
-}
 
 const activeWorkout = ref<WorkoutWithSets | null>(null);
 const workoutName = ref("");
@@ -196,7 +179,7 @@ async function finishWorkout() {
 const groupedSets = computed(() => {
   if (!activeWorkout.value) return {};
   
-  const groups: Record<number, { exerciseName: string; muscleGroup: string; sets: WorkoutSet[] }> = {};
+  const groups: Record<number, { exerciseName: string; muscleGroup: string; sets: WorkoutSetWithExercise[] }> = {};
   
   for (const set of activeWorkout.value.sets) {
     if (!groups[set.exerciseId]) {
@@ -206,7 +189,7 @@ const groupedSets = computed(() => {
         sets: [],
       };
     }
-    groups[set.exerciseId].sets.push(set);
+    groups[set.exerciseId]!.sets.push(set);
   }
   
   return groups;

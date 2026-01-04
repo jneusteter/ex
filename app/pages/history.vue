@@ -75,7 +75,7 @@
         >
           <div v-if="workoutDetails[workout.id]" class="space-y-4">
             <div
-              v-for="(group, exerciseName) in groupSetsByExercise(workoutDetails[workout.id].sets)"
+              v-for="(group, exerciseName) in groupSetsByExercise(workoutDetails[workout.id]?.sets ?? [])"
               :key="exerciseName"
               class="bg-dark-700/50 rounded-lg p-4"
             >
@@ -93,7 +93,7 @@
                 </template>
               </div>
             </div>
-            <div v-if="!workoutDetails[workout.id].sets.length" class="text-dark-500 text-center py-4">
+            <div v-if="!(workoutDetails[workout.id]?.sets?.length)" class="text-dark-500 text-center py-4">
               No exercises logged
             </div>
           </div>
@@ -107,23 +107,10 @@
 </template>
 
 <script setup lang="ts">
-import type { Workout } from "~/server/database/schema";
+import type { Workout, WorkoutWithSets, WorkoutSetWithExercise } from "~/types/database";
 import IconChart from "~/components/icons/IconChart.vue";
 import IconDumbbell from "~/components/icons/IconDumbbell.vue";
 import IconTrash from "~/components/icons/IconTrash.vue";
-
-interface WorkoutSet {
-  id: number;
-  setNumber: number;
-  weight: number | null;
-  reps: number | null;
-  rpe: number | null;
-  exerciseName: string;
-}
-
-interface WorkoutWithSets extends Workout {
-  sets: WorkoutSet[];
-}
 
 const { data: workouts, pending, refresh } = await useFetch<Workout[]>("/api/workouts");
 const expandedWorkouts = ref<number[]>([]);
@@ -147,13 +134,13 @@ async function toggleExpand(workoutId: number) {
   }
 }
 
-function groupSetsByExercise(sets: WorkoutSet[]) {
-  const groups: Record<string, WorkoutSet[]> = {};
+function groupSetsByExercise(sets: WorkoutSetWithExercise[]) {
+  const groups: Record<string, WorkoutSetWithExercise[]> = {};
   for (const set of sets) {
     if (!groups[set.exerciseName]) {
       groups[set.exerciseName] = [];
     }
-    groups[set.exerciseName].push(set);
+    groups[set.exerciseName]!.push(set);
   }
   return groups;
 }

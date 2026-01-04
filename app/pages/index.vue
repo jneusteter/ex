@@ -110,7 +110,7 @@
 </template>
 
 <script setup lang="ts">
-import type { Workout } from "~/server/database/schema";
+import type { Workout } from "~/types/database";
 import IconDumbbell from "~/components/icons/IconDumbbell.vue";
 import IconClipboard from "~/components/icons/IconClipboard.vue";
 import IconCheck from "~/components/icons/IconCheck.vue";
