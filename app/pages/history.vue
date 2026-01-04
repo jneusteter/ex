@@ -108,6 +108,9 @@
 </template>
 
 <script setup lang="ts">
+import { ref, computed } from "vue";
+import { useFetch } from "#imports";
+import { $fetch } from "ofetch";
 import type { Workout, WorkoutWithSets, WorkoutSetWithExercise } from "~/types/database";
 import IconChart from "~/components/icons/IconChart.vue";
 import IconDumbbell from "~/components/icons/IconDumbbell.vue";
@@ -118,7 +121,7 @@ const expandedWorkouts = ref<number[]>([]);
 const workoutDetails = ref<Record<number, WorkoutWithSets>>({});
 
 const completedWorkouts = computed(() => {
-  return (workouts.value ?? []).filter(w => w.completedAt);
+  return (workouts.value ?? []).filter((w: Workout) => w.completedAt);
 });
 
 async function toggleExpand(workoutId: number) {

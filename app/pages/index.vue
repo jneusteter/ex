@@ -110,6 +110,8 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from "vue";
+import { useFetch } from "#imports";
 import type { Workout } from "~/types/database";
 import IconDumbbell from "~/components/icons/IconDumbbell.vue";
 import IconClipboard from "~/components/icons/IconClipboard.vue";
@@ -126,7 +128,7 @@ const stats = computed(() => {
   const now = new Date();
   const weekAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
   
-  const thisWeekWorkouts = (workouts.value ?? []).filter(w => {
+  const thisWeekWorkouts = (workouts.value ?? []).filter((w: Workout) => {
     const started = new Date(w.startedAt);
     return started >= weekAgo && w.completedAt;
   });

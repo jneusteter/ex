@@ -124,11 +124,16 @@
 </template>
 
 <script setup lang="ts">
+import { ref, computed, onMounted } from "vue";
+import { useRouter } from "#imports";
+import { $fetch } from "ofetch";
 import type { Workout, Exercise, WorkoutWithSets, WorkoutSetWithExercise } from "~/types/database";
 import IconDumbbell from "~/components/icons/IconDumbbell.vue";
 import IconPlay from "~/components/icons/IconPlay.vue";
 import IconCheck from "~/components/icons/IconCheck.vue";
 import IconPlus from "~/components/icons/IconPlus.vue";
+
+const router = useRouter();
 
 const activeWorkout = ref<WorkoutWithSets | null>(null);
 const workoutName = ref("");
@@ -138,7 +143,7 @@ const setLoggerData = ref<{ exerciseId: number; exerciseName: string } | null>(n
 // Check for active workout on mount
 onMounted(async () => {
   const workouts = await $fetch<Workout[]>("/api/workouts");
-  const active = workouts.find(w => !w.completedAt);
+  const active = workouts.find((w: Workout) => !w.completedAt);
   if (active) {
     await loadWorkout(active.id);
   }
@@ -174,7 +179,7 @@ async function finishWorkout() {
   });
   activeWorkout.value = null;
   workoutName.value = "";
-  navigateTo("/history");
+  router.push("/history");
 }
 
 const groupedSets = computed(() => {

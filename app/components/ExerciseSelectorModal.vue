@@ -62,6 +62,8 @@
 </template>
 
 <script setup lang="ts">
+import { ref, computed } from "vue";
+import { useFetch } from "#imports";
 import type { Exercise } from "~/types/database";
 import IconX from "~/components/icons/IconX.vue";
 import IconSearch from "~/components/icons/IconSearch.vue";
@@ -80,7 +82,7 @@ const filteredExercises = computed(() => {
   if (!searchQuery.value) return exercises.value;
   
   const query = searchQuery.value.toLowerCase();
-  return exercises.value.filter(e => 
+  return exercises.value.filter((e: Exercise) => 
     e.name.toLowerCase().includes(query) ||
     e.muscleGroup.toLowerCase().includes(query)
   );

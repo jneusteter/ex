@@ -4,6 +4,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ['@nuxtjs/tailwindcss'],
   css: ['~/assets/css/main.css'],
+  imports: { autoImport: false },
   app: {
     head: {
       title: 'LiftTrack - Weight Lifting Tracker',

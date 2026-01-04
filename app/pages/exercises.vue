@@ -92,6 +92,9 @@
 </template>
 
 <script setup lang="ts">
+import { ref, computed } from "vue";
+import { useFetch } from "#imports";
+import { $fetch } from "ofetch";
 import type { Exercise } from "~/types/database";
 import IconPlus from "~/components/icons/IconPlus.vue";
 import IconSearch from "~/components/icons/IconSearch.vue";
@@ -111,7 +114,7 @@ const { data: exercises, pending, refresh } = await useFetch<Exercise[]>("/api/e
 const filteredExercises = computed(() => {
   if (!exercises.value) return [];
   
-  return exercises.value.filter((exercise) => {
+  return exercises.value.filter((exercise: Exercise) => {
     const matchesSearch = !searchQuery.value || 
       exercise.name.toLowerCase().includes(searchQuery.value.toLowerCase());
     const matchesMuscleGroup = !selectedMuscleGroup.value || 

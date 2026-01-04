@@ -1,8 +1,9 @@
 import { eq } from "drizzle-orm";
+import { defineEventHandler, createError, readBody, H3Event } from "h3";
 import { db } from "../../database";
 import { exercises } from "../../database/schema";
 
-export default defineEventHandler(async (event) => {
+export default defineEventHandler(async (event: H3Event) => {
   const id = Number(event.context.params?.id);
   const method = event.method;
 

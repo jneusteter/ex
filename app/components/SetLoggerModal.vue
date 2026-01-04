@@ -112,6 +112,7 @@
 </template>
 
 <script setup lang="ts">
+import { reactive } from "vue";
 import IconX from "~/components/icons/IconX.vue";
 import IconCheck from "~/components/icons/IconCheck.vue";
 
