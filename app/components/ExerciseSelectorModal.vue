@@ -65,6 +65,7 @@
 import { ref, computed } from "vue";
 import { useFetch } from "#imports";
 import type { Exercise } from "~/types/database";
+import JButton from "~/components/form/JButton.vue";
 import IconX from "~/components/icons/IconX.vue";
 import IconSearch from "~/components/icons/IconSearch.vue";
 

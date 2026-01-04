@@ -128,6 +128,7 @@ import { ref, computed, onMounted } from "vue";
 import { useRouter } from "#imports";
 import { $fetch } from "ofetch";
 import type { Workout, Exercise, WorkoutWithSets, WorkoutSetWithExercise } from "~/types/database";
+import JButton from "~/components/form/JButton.vue";
 import IconDumbbell from "~/components/icons/IconDumbbell.vue";
 import IconPlay from "~/components/icons/IconPlay.vue";
 import IconCheck from "~/components/icons/IconCheck.vue";

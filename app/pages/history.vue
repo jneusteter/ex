@@ -112,6 +112,7 @@ import { ref, computed } from "vue";
 import { useFetch } from "#imports";
 import { $fetch } from "ofetch";
 import type { Workout, WorkoutWithSets, WorkoutSetWithExercise } from "~/types/database";
+import JButton from "~/components/form/JButton.vue";
 import IconChart from "~/components/icons/IconChart.vue";
 import IconDumbbell from "~/components/icons/IconDumbbell.vue";
 import IconTrash from "~/components/icons/IconTrash.vue";
