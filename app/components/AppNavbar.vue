@@ -25,18 +25,7 @@
       </NuxtLink>
     </nav>
 
-    <!-- User section -->
-    <div class="px-4 py-4 border-t border-dark-800">
-      <div class="flex items-center gap-3 px-4 py-3 rounded-lg bg-dark-900">
-        <div class="w-9 h-9 bg-accent-600 rounded-full flex items-center justify-center">
-          <span class="text-sm font-semibold text-white">U</span>
-        </div>
-        <div class="flex-1 min-w-0">
-          <p class="text-sm font-medium text-white truncate">User</p>
-          <p class="text-xs text-dark-500 truncate">Free Plan</p>
-        </div>
-      </div>
-    </div>
+
   </aside>
 </template>
 
