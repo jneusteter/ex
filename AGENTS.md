@@ -199,6 +199,25 @@ Reusable UI/form components use the `J` prefix convention and are located in `ap
 - `JButton.vue` - Button component with variants (primary, secondary, ghost, danger)
 - Future: `JInput.vue`, `JSelect.vue`, `JModal.vue`, etc.
 
+#### UI Component Styling
+
+**J-prefixed UI components must be self-contained** - all styles should live inside the component using Tailwind utility classes, NOT in external CSS files like `main.css`.
+
+```vue
+<!-- Good: Styles defined inline in the component -->
+<script setup lang="ts">
+const baseClasses = "inline-flex items-center justify-center px-4 py-2 rounded-lg";
+const variantClasses = {
+  primary: "bg-accent-500 text-white hover:bg-accent-600",
+  secondary: "bg-dark-700 text-dark-100 hover:bg-dark-600",
+};
+</script>
+
+<!-- Bad: Don't define .btn-* classes in main.css for J-components -->
+```
+
+This ensures UI components are portable and their styles are co-located with their logic.
+
 ### Formatting
 
 - **Indentation:** 2 spaces
@@ -222,7 +241,8 @@ if (result.length === 0) {
 
 - **Custom colors:** `dark-*` (grays), `accent-*` (green)
 - **Use utility classes** from the design system
-- **Common components:** `.card`, `.btn-primary`, `.btn-secondary`, `.input`
+- **Global CSS (`main.css`):** Only for base styles, scrollbar, and non-component utilities (`.card`, `.input`, `.label`)
+- **J-components:** Styles must be inline in the component, not in `main.css`
 
 ## Important Notes
 
