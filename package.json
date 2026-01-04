@@ -16,6 +16,7 @@
     "lint:fix": "oxlint . --fix"
   },
   "dependencies": {
+    "@vite-pwa/nuxt": "1.1.0",
     "drizzle-orm": "^0.45.1",
     "nuxt": "^4.2.2",
     "vue": "^3.5.26",
