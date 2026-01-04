@@ -14,9 +14,9 @@
           <h2 class="text-lg font-semibold text-white">
             {{ exercise ? 'Edit Exercise' : 'Add Exercise' }}
           </h2>
-          <FormButton variant="ghost" @click="$emit('close')" class="p-2 -mr-2">
+          <JButton variant="ghost" @click="$emit('close')" class="p-2 -mr-2">
             <IconX class="w-5 h-5" />
-          </FormButton>
+          </JButton>
         </div>
 
         <!-- Form -->
@@ -63,12 +63,12 @@
           </div>
 
           <div class="flex gap-3 pt-2">
-            <FormButton variant="secondary" @click="$emit('close')" class="flex-1">
+            <JButton variant="secondary" @click="$emit('close')" class="flex-1">
               Cancel
-            </FormButton>
-            <FormButton type="submit" class="flex-1">
+            </JButton>
+            <JButton type="submit" class="flex-1">
               {{ exercise ? 'Save Changes' : 'Add Exercise' }}
-            </FormButton>
+            </JButton>
           </div>
         </form>
       </div>

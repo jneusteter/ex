@@ -73,6 +73,7 @@ bun test --test-name-pattern "pattern"
 app/
 ├── assets/css/       # Global CSS (Tailwind base)
 ├── components/       # Vue components
+│   ├── form/         # Reusable UI components (J-prefixed)
 │   └── icons/        # Icon components
 ├── layouts/          # Page layouts
 ├── pages/            # File-based routing
@@ -183,12 +184,20 @@ export type NewExercise = typeof exercises.$inferInsert;
 | Element | Convention | Example |
 |---------|------------|---------|
 | Vue components | PascalCase | `ExerciseModal.vue` |
+| UI components | J-prefixed PascalCase | `JButton.vue`, `JInput.vue` |
 | Pages | kebab-case | `workout.vue` |
 | API routes | kebab-case | `index.ts`, `[id].ts` |
 | Variables/functions | camelCase | `handleSubmit`, `isActive` |
 | Types/interfaces | PascalCase | `Exercise`, `Workout` |
 | Database columns | snake_case | `muscle_group`, `created_at` |
 | CSS classes | kebab-case | `btn-primary`, `card` |
+
+#### UI Component Naming
+
+Reusable UI/form components use the `J` prefix convention and are located in `app/components/form/`:
+
+- `JButton.vue` - Button component with variants (primary, secondary, ghost, danger)
+- Future: `JInput.vue`, `JSelect.vue`, `JModal.vue`, etc.
 
 ### Formatting
 
